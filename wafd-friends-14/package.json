@@ -1,0 +1,12 @@
+{
+  "name": "wafd-friends-14-batch",
+  "version": "1.0.0",
+  "description": "Modern Class Management Website for WAFD FRIENDS 14 BATCH",
+  "main": "server.js",
+  "scripts": {
+    "start": "agy-node server.js"
+  },
+  "keywords": ["wafd", "batch14", "class-management"],
+  "author": "WAFD Batch 14",
+  "license": "ISC"
+}

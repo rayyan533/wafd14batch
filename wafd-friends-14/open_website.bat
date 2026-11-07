@@ -1,0 +1,3 @@
+@echo off
+echo Opening WAFD FRIENDS 14 BATCH Website...
+start http://localhost:3000

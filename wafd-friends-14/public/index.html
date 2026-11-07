@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAFD FRIENDS 14 BATCH - Class Management Portal</title>
+  <meta name="description" content="Official Class Management and Student Portal for WAFD FRIENDS 14 BATCH under Class Usthad Muhammed Haithami.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ========================================================
+       TOP NOTIFICATION BANNER
+       ======================================================== -->
+  <div id="public-notification-banner" class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 text-white text-xs sm:text-sm py-2 px-4 shadow-inner text-center font-medium flex items-center justify-center gap-2">
+    <i data-lucide="sparkles" class="w-4 h-4 text-gold-400 flex-shrink-0 animate-pulse"></i>
+    <span id="banner-text">Welcome to WAFD FRIENDS 14 BATCH Portal! Phone Call Day is every Sunday.</span>
+  </div>
+
+  <!-- ========================================================
+       GLOBAL NAVIGATION
+       ======================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Brand Logo & Class Title -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-brand-700 to-brand-900 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <span class="font-extrabold text-sm sm:text-base tracking-tighter">W14</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 val-website-name leading-tight">
+                WAFD FRIENDS 14 BATCH
+              </h1>
+            </div>
+            <p class="text-xs text-brand-700 font-semibold tracking-wide flex items-center gap-1.5">
+              <span>Class: <strong class="val-class-name">WAFD</strong></span>
+              <span>•</span>
+              <span class="val-batch-year">14th Batch</span>
+            </p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600">
+          <a href="#home" class="hover:text-brand-700 transition">Home</a>
+          <a href="#usthad" class="hover:text-brand-700 transition">Class Usthad</a>
+          <a href="#students" class="hover:text-brand-700 transition">Students (<span class="val-total-students">22</span>)</a>
+          <a href="#leadership" class="hover:text-brand-700 transition">Leadership</a>
+          <a href="#phone-day" class="hover:text-brand-700 transition">Phone Call Day</a>
+          <a href="#apps" class="hover:text-brand-700 transition flex items-center gap-1.5 text-emerald-800 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+            <i data-lucide="grid" class="w-3.5 h-3.5 text-emerald-700"></i>
+            <span>Digital Apps</span>
+          </a>
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Live Phone Day Pill -->
+          <div id="phone-day-status-pill" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-800 border border-brand-200">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+            <span>Sunday Call Day</span>
+          </div>
+
+          <!-- Admin Portal / Login Button -->
+          <button id="admin-nav-btn" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm active:scale-95">
+            <i data-lucide="lock" class="w-4 h-4 text-amber-300"></i>
+            <span>Admin Login</span>
+          </button>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition" aria-label="Toggle Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-nav-menu" class="hidden md:hidden py-4 border-t border-slate-100 bg-white/95 backdrop-blur-md">
+        <div class="flex flex-col gap-2 text-sm font-semibold text-slate-700 px-2">
+          <a href="#home" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-100 transition">Home</a>
+          <a href="#usthad" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-100 transition">Class Usthad</a>
+          <a href="#students" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-100 transition flex items-center justify-between">
+            <span>Student Directory</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 val-total-students">22</span>
+          </a>
+          <a href="#leadership" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-100 transition">Class Leadership Team</a>
+          <a href="#phone-day" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-100 transition">Phone Call Day</a>
+          <a href="#apps" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-emerald-50 text-emerald-800 font-bold transition flex items-center gap-2">
+            <i data-lucide="globe" class="w-4 h-4"></i>
+            <span>Campus 360 & Silah Apps</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN PUBLIC CONTAINER
+       ======================================================== -->
+  <main id="public-main-view" class="flex-grow">
+    
+    <!-- ========================================================
+         HERO SECTION
+         ======================================================== -->
+    <section id="home" class="relative overflow-hidden islamic-bg-pattern text-white pt-24 sm:pt-32 pb-16 sm:pb-24">
+      <div class="hero-glow top-0 left-1/4"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Text -->
+          <div class="lg:col-span-7 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/10 backdrop-blur-md text-amber-300 border border-white/20 mb-6">
+              <i data-lucide="award" class="w-4 h-4"></i>
+              <span>Official Batch Portal • 14th Batch</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none text-white">
+              WAFD FRIENDS <br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-emerald-200 to-teal-200">14 BATCH</span>
+            </h1>
+
+            <p class="mt-4 sm:mt-6 text-base sm:text-xl text-emerald-100/90 max-w-2xl font-light leading-relaxed">
+              United in knowledge, friendship, and character under the revered mentorship of our Class Usthad. Comprehensive batch management, student directory, and leadership hub.
+            </p>
+
+            <!-- Hero Stats Counter Pills -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-8 pt-6 border-t border-white/15">
+              <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
+                <span class="block text-2xl sm:text-3xl font-extrabold text-amber-300 val-total-students">22</span>
+                <span class="text-xs text-emerald-100/80 font-medium">Total Students</span>
+              </div>
+              <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
+                <span class="block text-lg sm:text-xl font-extrabold text-white truncate val-class-name">WAFD</span>
+                <span class="text-xs text-emerald-100/80 font-medium">Class Name</span>
+              </div>
+              <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
+                <span class="block text-base sm:text-lg font-extrabold text-amber-300 truncate val-phone-day">Sunday</span>
+                <span class="text-xs text-emerald-100/80 font-medium">Phone Call Day</span>
+              </div>
+              <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
+                <span class="block text-2xl sm:text-3xl font-extrabold text-white val-total-leaders">10</span>
+                <span class="text-xs text-emerald-100/80 font-medium">Leaders Appointed</span>
+              </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <a href="#students" class="px-5 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 hover:from-amber-300 hover:to-amber-400 transition shadow-lg flex items-center gap-2">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                <span>Student Directory</span>
+              </a>
+              <a href="https://darulfalah.in/campus360/index.php" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md border border-emerald-400/40 transition flex items-center gap-2">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-amber-300"></i>
+                <span>Campus 360</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+              </a>
+              <a href="https://hostiva.co.in/silah" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl font-semibold text-sm bg-brand-800/90 hover:bg-brand-700 text-emerald-100 border border-emerald-600/50 transition flex items-center gap-2">
+                <i data-lucide="link" class="w-4 h-4 text-amber-300"></i>
+                <span>Silah App</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+              </a>
+              <a href="#leadership" class="px-4 py-3.5 rounded-xl font-semibold text-sm bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 transition flex items-center gap-2">
+                <i data-lucide="shield" class="w-4 h-4 text-emerald-300"></i>
+                <span>Leaders</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Hero Right Card: Respected Usthad Card -->
+          <div class="lg:col-span-5" id="usthad">
+            <div class="glass-dark rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 relative overflow-hidden group">
+              <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-amber-400/20 rounded-full blur-2xl pointer-events-none"></div>
+              
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-300/30 flex items-center gap-1.5">
+                  <i data-lucide="star" class="w-3.5 h-3.5 text-amber-300 fill-amber-300"></i>
+                  <span>Class Teacher & Mentor</span>
+                </span>
+                <span class="text-xs text-emerald-200/80 font-mono">WAFD Batch 14</span>
+              </div>
+
+              <div class="flex items-center gap-4 my-4">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-500 via-amber-600 to-amber-700 flex items-center justify-center text-white shadow-xl flex-shrink-0 text-2xl font-bold border-2 border-white/30">
+                  MH
+                </div>
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight val-usthad-name">
+                    Muhammed Haithami
+                  </h3>
+                  <p class="text-sm font-semibold text-amber-300 val-usthad-title mt-0.5">
+                    Respected Class Usthad
+                  </p>
+                  <p class="text-xs text-emerald-100/70 mt-1">Class Guide & Spiritual Guardian</p>
+                </div>
+              </div>
+
+              <!-- Usthad Message Quote -->
+              <div class="mt-4 p-4 rounded-xl bg-white/5 border border-white/10 text-emerald-100/90 text-sm leading-relaxed italic">
+                “<span class="val-usthad-message">Guided by knowledge, united in brotherhood, adab, and excellence.</span>”
+              </div>
+
+              <!-- Quick Info Grid -->
+              <div class="mt-5 grid grid-cols-2 gap-3 pt-4 border-t border-white/10 text-xs">
+                <div>
+                  <span class="text-emerald-200/60 block">Designation</span>
+                  <span class="font-bold text-white">Class Usthad</span>
+                </div>
+                <div>
+                  <span class="text-emerald-200/60 block">Class Authority</span>
+                  <span class="font-bold text-amber-300">WAFD 14 BATCH</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PHONE CALL DAY SPOTLIGHT WIDGET
+         ======================================================== -->
+    <section id="phone-day" class="py-8 bg-gradient-to-r from-amber-500/10 via-brand-50 to-amber-500/10 border-b border-amber-200/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel rounded-2xl p-6 border border-amber-200/80 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+              <i data-lucide="phone-call" class="w-7 h-7"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg font-bold text-slate-900">Phone Call Day</h3>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-300 uppercase val-phone-day">
+                  Sunday
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1">
+                Designated slot: <strong class="text-slate-800 val-phone-time">04:00 PM – 06:30 PM</strong>
+              </p>
+              <p class="text-xs text-slate-500 mt-0.5 val-phone-guidelines">
+                Calls permitted exclusively on the designated day and slot. Maintain proper etiquette.
+              </p>
+            </div>
+          </div>
+
+          <!-- Countdown / Status Card -->
+          <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+            <!-- Live Time Counter Pill -->
+            <div id="live-phone-timer-container" class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-amber-200 shadow-xs">
+              <span class="text-xs text-slate-500 font-medium">Countdown:</span>
+              <div id="live-countdown-clock" class="font-mono text-xs sm:text-sm font-black text-amber-700 flex items-center gap-1">
+                <span id="cd-days">0d</span> :
+                <span id="cd-hours">00h</span> :
+                <span id="cd-mins">00m</span> :
+                <span id="cd-secs">00s</span>
+              </div>
+            </div>
+
+            <button onclick="document.getElementById('students').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm flex items-center justify-center gap-1.5 flex-shrink-0">
+              <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+              <span>Student Call Directory</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CLASS LEADERSHIP TEAM SECTION
+         ======================================================== -->
+    <section id="leadership" class="py-14 sm:py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800 mb-3">
+            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-600"></i>
+            <span>Class Cabinet & Council</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Class Leadership Team
+          </h2>
+          <p class="mt-3 text-base text-slate-600">
+            Student leaders of WAFD 14 Batch entrusted with responsibility, coordination, and batch activities.
+          </p>
+        </div>
+
+        <!-- Leadership Cards Grid -->
+        <div id="leadership-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <!-- Populated dynamically via app.js -->
+          <div class="p-8 text-center text-slate-400 col-span-full">Loading leadership team...</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         STUDENT MANAGEMENT & DIRECTORY SECTION
+         ======================================================== -->
+    <section id="students" class="py-14 sm:py-20 bg-white border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800 mb-2">
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-brand-700"></i>
+              <span>Enrolled Students</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Student Directory
+            </h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Browse all 22 batch students with their admission numbers, room allocations, and leadership designations.
+            </p>
+          </div>
+
+          <!-- Total Count Badge -->
+          <div class="flex items-center gap-2 self-start md:self-auto">
+            <span id="directory-count-badge" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-50 text-brand-800 border border-brand-200 shadow-xs">
+              22 Students
+            </span>
+          </div>
+        </div>
+
+        <!-- Search, Filter & View Controls Bar -->
+        <div class="glass-panel p-4 rounded-2xl border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          
+          <!-- Search Bar -->
+          <div class="relative w-full md:w-96">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="student-search-input" 
+              placeholder="Search by name, admission no (e.g. 519), or phone..." 
+              class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-brand-600 bg-white"
+            >
+          </div>
+
+          <!-- Filter & View Controls -->
+          <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+            
+            <!-- Room Filter -->
+            <select id="filter-room-select" class="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-brand-600">
+              <option value="">All Rooms</option>
+              <option value="Room 1">Room 1</option>
+              <option value="Room 2">Room 2</option>
+              <option value="Room 3">Room 3</option>
+            </select>
+
+            <!-- Blood Group Filter -->
+            <select id="filter-blood-select" class="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-brand-600">
+              <option value="">All Blood</option>
+              <option value="O+">O+</option>
+              <option value="A+">A+</option>
+              <option value="B+">B+</option>
+              <option value="AB+">AB+</option>
+              <option value="O-">O-</option>
+              <option value="AB-">AB-</option>
+            </select>
+
+            <!-- Sort By -->
+            <select id="sort-students-select" class="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-brand-600">
+              <option value="adm_asc">Adm # (Lowest First)</option>
+              <option value="adm_desc">Adm # (Highest First)</option>
+              <option value="name_asc">Name (A – Z)</option>
+              <option value="name_desc">Name (Z – A)</option>
+            </select>
+
+            <!-- Export to CSV Button -->
+            <button id="btn-export-students-csv" class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold bg-white text-slate-700 hover:bg-slate-50 transition flex items-center gap-1.5 shadow-xs" title="Export Student Records to CSV">
+              <i data-lucide="download" class="w-3.5 h-3.5 text-brand-700"></i>
+              <span class="hidden sm:inline">CSV</span>
+            </button>
+
+            <!-- Layout Toggle: Cards vs Table -->
+            <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+              <button id="view-mode-cards" class="p-1.5 rounded-lg text-xs font-semibold bg-brand-700 text-white shadow-xs transition" title="Card View">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              </button>
+              <button id="view-mode-table" class="p-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition" title="Table View">
+                <i data-lucide="table" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Student Cards Container -->
+        <div id="students-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Student Table Container -->
+        <div id="students-table-container" class="hidden overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase font-bold text-slate-500 tracking-wider">
+                <th class="py-3.5 px-4">Admission #</th>
+                <th class="py-3.5 px-4">Student Name</th>
+                <th class="py-3.5 px-4">Room No</th>
+                <th class="py-3.5 px-4">Blood Group</th>
+                <th class="py-3.5 px-4">Contact</th>
+                <th class="py-3.5 px-4 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="students-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty State -->
+        <div id="students-empty-state" class="hidden text-center py-16 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+          <i data-lucide="search-x" class="w-12 h-12 text-slate-300 mx-auto mb-3"></i>
+          <h4 class="text-base font-bold text-slate-700">No students match your search</h4>
+          <p class="text-xs text-slate-500 mt-1">Try clearing the search query or room filter.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         DIGITAL WEB APPS INTEGRATION: CAMPUS 360 & SILAH (NO MODAL)
+         ======================================================== -->
+    <section id="apps" class="py-14 sm:py-20 bg-gradient-to-b from-slate-50 via-emerald-50/40 to-slate-50 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800 mb-3 border border-brand-200">
+            <i data-lucide="globe" class="w-3.5 h-3.5 text-brand-700"></i>
+            <span>Connected Digital Web Platforms</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Campus 360 & Digital Web Apps
+          </h2>
+          <p class="mt-3 text-base text-slate-600">
+            Direct, seamless access to official institution management portals without restricted modal frames.
+          </p>
+        </div>
+
+        <!-- 2 Connected Apps Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Card 1: Darul Falah Campus 360 -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-md card-hover-effect flex flex-col justify-between relative overflow-hidden group bg-white">
+            <div class="absolute right-0 top-0 translate-x-10 -translate-y-10 w-48 h-48 bg-emerald-100/60 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center gap-1.5">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+                  <span>Official Academic ERP</span>
+                </span>
+                <span class="text-xs font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  darulfalah.in
+                </span>
+              </div>
+
+              <div class="flex items-start gap-4 my-2">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-700 via-emerald-600 to-teal-500 text-white flex items-center justify-center text-xl font-black shadow-md flex-shrink-0">
+                  360°
+                </div>
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-emerald-700 transition">
+                    Darul Falah Campus 360
+                  </h3>
+                  <p class="text-xs font-semibold text-brand-700 mt-0.5">
+                    Campus Management & Student Information System
+                  </p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-600 mt-4 leading-relaxed">
+                Direct integration with Darul Falah's official <strong>Campus 360</strong> enterprise portal. Access student attendance, academic marks, progress reports, examination schedules, and official batch notifications.
+              </p>
+
+              <!-- Feature Bullets -->
+              <div class="grid grid-cols-2 gap-2.5 mt-5 text-xs text-slate-700">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+                  <span>Attendance & Leaves</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+                  <span>Exam Marks & Reports</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+                  <span>Student Official Records</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+                  <span>Campus Academic Notices</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Launch Button (No Modal) -->
+            <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+              <span class="text-xs font-mono text-slate-400 truncate hidden sm:inline">
+                https://darulfalah.in/campus360/index.php
+              </span>
+              <a 
+                href="https://darulfalah.in/campus360/index.php" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                id="btn-launch-campus360"
+                class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm bg-brand-700 hover:bg-brand-800 text-white shadow-md transition flex items-center justify-center gap-2 group-hover:scale-[1.02]"
+              >
+                <span>Open Campus 360 Web App</span>
+                <i data-lucide="external-link" class="w-4 h-4 text-amber-300"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Hostiva Silah Portal -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md card-hover-effect flex flex-col justify-between relative overflow-hidden group bg-white">
+            <div class="absolute right-0 top-0 translate-x-10 -translate-y-10 w-48 h-48 bg-teal-100/50 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 flex items-center gap-1.5">
+                  <i data-lucide="network" class="w-3.5 h-3.5 text-teal-600"></i>
+                  <span>Batch Connection App</span>
+                </span>
+                <span class="text-xs font-mono text-teal-700 font-bold bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                  hostiva.co.in/silah
+                </span>
+              </div>
+
+              <div class="flex items-start gap-4 my-2">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-700 to-emerald-500 text-white flex items-center justify-center text-xl font-black shadow-md flex-shrink-0">
+                  صلة
+                </div>
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-teal-700 transition">
+                    Silah Portal
+                  </h3>
+                  <p class="text-xs font-semibold text-teal-700 mt-0.5">
+                    Batch Communication & Brotherhood Network
+                  </p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-600 mt-4 leading-relaxed">
+                Dedicated connection to the <strong>Silah</strong> web application. Designed for batch coordination, student directory synchronization, and streamlined communication for WAFD 14 batch members.
+              </p>
+
+              <!-- Feature Bullets -->
+              <div class="grid grid-cols-2 gap-2.5 mt-5 text-xs text-slate-700">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-teal-600 flex-shrink-0"></i>
+                  <span>Batch Directory Link</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-teal-600 flex-shrink-0"></i>
+                  <span>Direct SSL Authentication</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-teal-600 flex-shrink-0"></i>
+                  <span>Hostiva Cloud Connectivity</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-teal-600 flex-shrink-0"></i>
+                  <span>Configurable via Admin</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Launch Button (No Modal) -->
+            <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+              <span class="text-xs font-mono text-slate-400 truncate hidden sm:inline">
+                https://hostiva.co.in/silah
+              </span>
+              <a 
+                href="https://hostiva.co.in/silah" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                id="btn-launch-silah"
+                class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm bg-teal-700 hover:bg-teal-800 text-white shadow-md transition flex items-center justify-center gap-2 group-hover:scale-[1.02]"
+              >
+                <span>Open Silah Portal Web App</span>
+                <i data-lucide="external-link" class="w-4 h-4 text-amber-300"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         NOTICES & ANNOUNCEMENTS SECTION
+         ======================================================== -->
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 mb-2">
+            <i data-lucide="bell" class="w-3.5 h-3.5 text-amber-600"></i>
+            <span>Notice Board</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Latest Class Announcements
+          </h2>
+        </div>
+
+        <div id="public-announcements-list" class="max-w-3xl mx-auto space-y-3">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         DYNAMIC CUSTOM SECTIONS CONTAINER
+         ======================================================== -->
+    <div id="custom-sections-container">
+      <!-- Custom sections created via Admin will render here -->
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       ADMIN DASHBOARD FULL VIEW (PROTECTED PORTAL)
+       ======================================================== -->
+  <section id="admin-dashboard-view" class="hidden flex-grow bg-slate-100 min-h-screen">
+    
+    <!-- Admin Dashboard Sub-Header -->
+    <div class="bg-slate-900 text-white border-b border-slate-800 sticky top-16 sm:top-20 z-30 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-sm shadow-md">
+              ADM
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base sm:text-lg font-bold tracking-tight text-white">WAFD Admin Dashboard</h2>
+                <span id="admin-user-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  admin (authorized)
+                </span>
+              </div>
+              <p class="text-xs text-slate-400">Manage students, leaders, class information, and sections.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 self-end sm:self-auto">
+            <button id="exit-dashboard-btn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:bg-slate-700 transition flex items-center gap-1.5">
+              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+              <span>View Live Website</span>
+            </button>
+            <button id="admin-logout-btn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-600/80 hover:bg-red-600 text-white transition flex items-center gap-1.5">
+              <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Navigation Tabs -->
+        <div class="flex items-center gap-1 overflow-x-auto py-2 scrollbar-none border-t border-slate-800 text-xs sm:text-sm font-semibold">
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="overview">
+            <i data-lucide="gauge" class="w-4 h-4"></i>
+            <span>Overview</span>
+          </button>
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="settings">
+            <i data-lucide="settings" class="w-4 h-4"></i>
+            <span>Class Settings</span>
+          </button>
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="students">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>Student Management</span>
+          </button>
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="leadership">
+            <i data-lucide="shield" class="w-4 h-4"></i>
+            <span>Leadership Team</span>
+          </button>
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="announcements">
+            <i data-lucide="bell" class="w-4 h-4"></i>
+            <span>Announcements</span>
+          </button>
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="sections">
+            <i data-lucide="layout" class="w-4 h-4"></i>
+            <span>Homepage Sections</span>
+          </button>
+          <button class="admin-tab-btn px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 flex-shrink-0" data-tab="security">
+            <i data-lucide="key" class="w-4 h-4"></i>
+            <span>Security</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Admin Content Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+      <!-- ==================== TAB: OVERVIEW ==================== -->
+      <div id="tab-overview" class="admin-tab-pane">
+        
+        <!-- Metrics Row -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase">Total Students</span>
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <i data-lucide="users" class="w-4 h-4"></i>
+              </div>
+            </div>
+            <div class="text-3xl font-extrabold text-slate-900 mt-2" id="stat-total-students">22</div>
+            <span class="text-xs text-emerald-600 font-semibold mt-1 block">Live Count in SQLite</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase">Leadership Positions</span>
+              <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
+                <i data-lucide="award" class="w-4 h-4"></i>
+              </div>
+            </div>
+            <div class="text-3xl font-extrabold text-slate-900 mt-2" id="stat-total-leaders">10</div>
+            <span class="text-xs text-slate-500 mt-1 block"><span id="stat-assigned-leaders" class="font-bold text-slate-700">8</span> Filled Positions</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase">Phone Call Day</span>
+              <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+              </div>
+            </div>
+            <div class="text-2xl font-extrabold text-brand-700 mt-2 val-phone-day">Sunday</div>
+            <span class="text-xs text-slate-500 mt-1 block val-phone-time">04:00 PM – 06:30 PM</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase">Announcements</span>
+              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center">
+                <i data-lucide="bell" class="w-4 h-4"></i>
+              </div>
+            </div>
+            <div class="text-3xl font-extrabold text-slate-900 mt-2" id="stat-announcements">2</div>
+            <span class="text-xs text-slate-500 mt-1 block">Live on Notice Board</span>
+          </div>
+        </div>
+
+        <!-- Quick Info Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Recent Activity Log -->
+          <div class="lg:col-span-8 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="font-bold text-slate-900 text-base mb-4 flex items-center gap-2">
+              <i data-lucide="history" class="w-4 h-4 text-emerald-600"></i>
+              <span>Recent Activity & Audit Log</span>
+            </h3>
+            <div id="admin-activity-logs" class="divide-y divide-slate-100">
+              <!-- Logs populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Room Allocation Breakdown -->
+          <div class="lg:col-span-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="font-bold text-slate-900 text-base mb-4 flex items-center gap-2">
+              <i data-lucide="home" class="w-4 h-4 text-brand-600"></i>
+              <span>Students per Room</span>
+            </h3>
+            <div id="admin-room-breakdown" class="space-y-2">
+              <!-- Populated dynamically -->
+            </div>
+
+            <!-- Silah shortcut card -->
+            <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="text-xs font-bold text-slate-700 block">External App Connection</span>
+              <p class="text-xs text-slate-500 mt-1">Hostiva Silah is linked and active.</p>
+              <button onclick="SilahApp.openExternal()" class="mt-3 w-full py-2 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg text-xs font-semibold text-brand-700 transition flex items-center justify-center gap-1.5">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Open Silah Application</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB: CLASS SETTINGS ==================== -->
+      <div id="tab-settings" class="admin-tab-pane hidden">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm max-w-4xl">
+          <div class="mb-6 pb-4 border-b border-slate-100">
+            <h3 class="text-xl font-bold text-slate-900">Class & Website Information</h3>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              All modifications saved here update the homepage immediately.
+            </p>
+          </div>
+
+          <form id="class-settings-form" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Website Name</label>
+                <input type="text" id="setting-website-name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Class Name</label>
+                <input type="text" id="setting-class-name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Class Usthad's Name</label>
+                <input type="text" id="setting-usthad-name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Usthad's Title</label>
+                <input type="text" id="setting-usthad-title" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Usthad's Motto / Guidance Message</label>
+              <textarea id="setting-usthad-message" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Phone Call Day</label>
+                <input type="text" id="setting-phone-call-day" placeholder="e.g. Sunday" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Phone Call Timings</label>
+                <input type="text" id="setting-phone-call-time" placeholder="e.g. 04:00 PM – 06:30 PM" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Phone Call Rules & Guidelines</label>
+              <textarea id="setting-phone-guidelines" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Campus 360 App URL (Darul Falah)</label>
+                <input type="url" id="setting-campus360-url" placeholder="https://darulfalah.in/campus360/index.php" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Silah External App URL (Hostiva)</label>
+                <input type="url" id="setting-silah-url" placeholder="https://hostiva.co.in/silah" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Batch Motto</label>
+              <input type="text" id="setting-batch-motto" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Top Notification Banner Text</label>
+              <input type="text" id="setting-notification-banner" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex justify-end">
+              <button type="submit" class="px-6 py-2.5 rounded-xl text-sm font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm flex items-center gap-2">
+                <i data-lucide="save" class="w-4 h-4"></i>
+                <span>Save All Settings</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- ==================== TAB: STUDENT MANAGEMENT ==================== -->
+      <div id="tab-students" class="admin-tab-pane hidden">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-xl font-bold text-slate-900">Manage Students</h3>
+                <span id="admin-student-count-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
+                  22 Total Students
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1">Add, edit details, or remove students. Initial batch admission numbers loaded.</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button onclick="AdminApp.openAddStudentModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm flex items-center gap-1.5">
+                <i data-lucide="user-plus" class="w-4 h-4"></i>
+                <span>Add New Student</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Search -->
+          <div class="mb-4">
+            <div class="relative max-w-sm">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+              <input type="text" id="admin-student-search" placeholder="Search by name or admission no..." class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-brand-600">
+            </div>
+          </div>
+
+          <!-- Students Table in Admin -->
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase font-bold text-slate-500">
+                  <th class="py-3 px-4">Adm #</th>
+                  <th class="py-3 px-4">Student Name</th>
+                  <th class="py-3 px-4">Room</th>
+                  <th class="py-3 px-4">Blood</th>
+                  <th class="py-3 px-4">Phone</th>
+                  <th class="py-3 px-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-students-table-body">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB: LEADERSHIP MANAGEMENT ==================== -->
+      <div id="tab-leadership" class="admin-tab-pane hidden">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Class Leadership Positions</h3>
+              <p class="text-xs text-slate-500 mt-1">
+                Assign students to positions, add custom positions, or remove roles.
+              </p>
+            </div>
+
+            <button onclick="AdminApp.openAddPositionModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm flex items-center gap-1.5 self-start sm:self-auto">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>Add Leadership Position</span>
+            </button>
+          </div>
+
+          <!-- Position List -->
+          <div id="admin-leadership-list" class="space-y-3">
+            <!-- Populated dynamically -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB: ANNOUNCEMENTS ==================== -->
+      <div id="tab-announcements" class="admin-tab-pane hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Post Announcement Form -->
+          <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="send" class="w-4 h-4 text-brand-600"></i>
+              <span>Post New Notice</span>
+            </h3>
+
+            <form id="admin-announcement-form" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Notice Title</label>
+                <input type="text" id="ann-title-input" placeholder="e.g. Phone Call Schedule Adjustment" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Priority</label>
+                <select id="ann-priority-input" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                  <option value="normal">Normal Announcement</option>
+                  <option value="urgent">Urgent Notice (Red Highlight)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Notice Content</label>
+                <textarea id="ann-message-input" rows="3" placeholder="Write announcement details..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-2.5 rounded-xl text-sm font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm flex items-center justify-center gap-2">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Publish Notice</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Active Announcements List -->
+          <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-4 h-4 text-brand-600"></i>
+              <span>Active Announcements</span>
+            </h3>
+            <div id="admin-announcements-list" class="space-y-3">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB: HOMEPAGE SECTIONS ==================== -->
+      <div id="tab-sections" class="admin-tab-pane hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Add Custom Section Form -->
+          <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="plus-circle" class="w-4 h-4 text-brand-600"></i>
+              <span>Add New Homepage Section</span>
+            </h3>
+
+            <form id="admin-section-form" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Section Title</label>
+                <input type="text" id="sec-title-input" placeholder="e.g. Daily Halaqa Timetable" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Subtitle / Badge</label>
+                <input type="text" id="sec-subtitle-input" placeholder="e.g. Academic Schedule" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Icon (Lucide)</label>
+                <select id="sec-icon-input" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                  <option value="sparkles">Sparkles</option>
+                  <option value="book-open">Book Open</option>
+                  <option value="phone-call">Phone Call</option>
+                  <option value="calendar">Calendar</option>
+                  <option value="award">Award</option>
+                  <option value="compass">Compass</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Section Body Content</label>
+                <textarea id="sec-content-input" rows="4" placeholder="Enter paragraph or bullet content..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-2.5 rounded-xl text-sm font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm flex items-center justify-center gap-2">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Add Section to Homepage</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Current Custom Sections List -->
+          <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="layout" class="w-4 h-4 text-brand-600"></i>
+              <span>Active Custom Sections</span>
+            </h3>
+            <div id="admin-sections-list" class="space-y-3">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB: SECURITY & ADMIN ACCOUNT ==================== -->
+      <div id="tab-security" class="admin-tab-pane hidden">
+        <div class="max-w-xl bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+              <i data-lucide="key" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Admin Account Credentials</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Change your admin username and secure password anytime.</p>
+            </div>
+          </div>
+
+          <!-- Current Username Info Pill -->
+          <div class="mb-5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-500 block">Current Logged-in Admin</span>
+              <strong id="current-admin-username-display" class="text-sm font-bold text-brand-800 font-mono">admin</strong>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
+              Authorized Administrator
+            </span>
+          </div>
+
+          <form id="change-password-form" class="space-y-5">
+            <!-- Current Password -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Current Password * (To Authorize Changes)</label>
+              <input type="password" id="cur-password" placeholder="Enter current admin password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+            </div>
+
+            <!-- New Username -->
+            <div class="pt-3 border-t border-slate-100">
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">New Username (Optional / Change Username)</label>
+              <input type="text" id="new-username" placeholder="Leave empty to keep current username" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600 font-mono">
+              <span class="text-[11px] text-slate-400 mt-1 block">Minimum 3 characters (e.g. wafd_admin, haithami_admin)</span>
+            </div>
+
+            <!-- New Password -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">New Password (Optional)</label>
+                <input type="password" id="new-password" placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" minlength="6">
+                <span class="text-[11px] text-slate-400 mt-1 block">Leave empty to keep current</span>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Confirm New Password</label>
+                <input type="password" id="conf-password" placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" minlength="6">
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100">
+              <button type="submit" class="w-full py-3 rounded-xl text-sm font-bold bg-brand-700 hover:bg-brand-800 text-white transition shadow-sm flex items-center justify-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-amber-300"></i>
+                <span>Save New Credentials</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================================
+       MODAL: ADMIN LOGIN
+       ======================================================== -->
+  <div id="admin-login-modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-overlay p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative animate-fade-in">
+      
+      <!-- Close button -->
+      <button id="close-login-modal" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-700 flex items-center justify-center mx-auto mb-3 border border-brand-100 shadow-xs">
+          <i data-lucide="shield-check" class="w-7 h-7"></i>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900">Admin Authentication</h3>
+        <p class="text-xs text-slate-500 mt-1">WAFD FRIENDS 14 BATCH Administrative Portal</p>
+      </div>
+
+      <!-- Error box -->
+      <div id="login-error-msg" class="hidden mb-4 p-3 rounded-xl bg-red-50 text-red-700 text-xs font-semibold border border-red-200">
+      </div>
+
+      <!-- Form -->
+      <form id="admin-login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Username</label>
+          <input type="text" id="admin-username" value="admin" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600 focus:outline-none" required>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Password</label>
+          <input type="password" id="admin-password" placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600 focus:outline-none" required>
+          <p class="text-[11px] text-slate-400 mt-1">Default: <code class="bg-slate-100 px-1 rounded font-mono">admin</code> / <code class="bg-slate-100 px-1 rounded font-mono">wafd14@admin</code></p>
+        </div>
+
+        <button type="submit" id="login-submit-btn" class="w-full py-3 rounded-xl font-bold text-sm bg-brand-700 text-white hover:bg-brand-800 transition shadow-md flex items-center justify-center gap-2">
+          <i data-lucide="log-in" class="w-4 h-4"></i>
+          <span>Enter Admin Dashboard</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: STUDENT DETAILS VIEW (PUBLIC)
+       ======================================================== -->
+  <div id="student-detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-overlay p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative animate-fade-in">
+      <button id="close-student-detail-modal" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-4 mb-6">
+        <div id="modal-student-avatar" class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-extrabold text-2xl shadow-md">
+          A
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 id="modal-student-name" class="text-xl font-black text-slate-900">Student Name</h3>
+          </div>
+          <span id="modal-student-adm" class="text-xs font-mono font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200 mt-1 inline-block">
+            #519
+          </span>
+          <span id="modal-student-leadership" class="hidden text-xs font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded ml-2">
+            Leader
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 text-xs mb-5">
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <span class="text-slate-400 block">Class & Batch</span>
+          <strong class="text-slate-800 text-sm">WAFD 14 BATCH</strong>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <span class="text-slate-400 block">Room Allocation</span>
+          <strong id="modal-student-room" class="text-slate-800 text-sm">Room 1</strong>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <span class="text-slate-400 block">Blood Group</span>
+          <strong id="modal-student-blood" class="text-slate-800 text-sm">O+</strong>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <span class="text-slate-400 block">Phone Call Day</span>
+          <strong class="text-amber-700 text-sm val-phone-day">Sunday</strong>
+        </div>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-100 text-xs mb-5">
+        <span class="text-emerald-800 font-bold block mb-1">Student Notes & Role</span>
+        <p id="modal-student-notes" class="text-slate-600 leading-relaxed italic">Batch Member</p>
+      </div>
+
+      <div class="flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-slate-100">
+        <span>Class Usthad: <strong class="text-slate-700 val-usthad-name">Muhammed Haithami</strong></span>
+        <span class="font-mono text-[11px]" id="modal-student-phone">Contact via Usthad</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: STUDENT FORM (ADD / EDIT - ADMIN)
+       ======================================================== -->
+  <div id="student-form-modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-overlay p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative animate-fade-in">
+      <button onclick="AdminApp.closeStudentModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <h3 id="student-modal-title" class="text-xl font-bold text-slate-900 mb-5">Add New Student</h3>
+
+      <form id="student-modal-form" class="space-y-4">
+        <input type="hidden" id="student-id-field">
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Admission No *</label>
+            <input type="text" id="student-adm-field" placeholder="e.g. 555" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600 font-mono" required>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Student Name *</label>
+            <input type="text" id="student-name-field" placeholder="Full name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Room No</label>
+            <input type="text" id="student-room-field" placeholder="e.g. Room 1" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Blood Group</label>
+            <input type="text" id="student-blood-field" placeholder="e.g. O+, B+, A+" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Phone Number (Parent / Student)</label>
+          <input type="text" id="student-phone-field" placeholder="+91 ..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600 font-mono">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Notes / Description</label>
+          <textarea id="student-notes-field" rows="2" placeholder="Responsibilities, hobbies or special notes..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3">
+          <button type="button" onclick="AdminApp.closeStudentModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl text-xs font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: LEADERSHIP POSITION FORM (ADMIN)
+       ======================================================== -->
+  <div id="position-form-modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-overlay p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative animate-fade-in">
+      <button onclick="AdminApp.closePositionModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <h3 id="pos-modal-title" class="text-xl font-bold text-slate-900 mb-5">Manage Leadership Position</h3>
+
+      <form id="position-modal-form" class="space-y-4">
+        <input type="hidden" id="pos-id-field">
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Position Title *</label>
+          <input type="text" id="pos-title-field" placeholder="e.g. Class Leader, Sports Coordinator" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600" required>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Assign Enrolled Student</label>
+          <select id="pos-student-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+            <option value="">-- Choose Student --</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Or Custom Assigned Name</label>
+          <input type="text" id="pos-custom-name" placeholder="Leave empty to use selected student" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Badge Color</label>
+            <select id="pos-badge-field" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm">
+              <option value="emerald">Emerald</option>
+              <option value="teal">Teal</option>
+              <option value="blue">Blue</option>
+              <option value="indigo">Indigo</option>
+              <option value="purple">Purple</option>
+              <option value="violet">Violet</option>
+              <option value="amber">Amber / Gold</option>
+              <option value="orange">Orange</option>
+              <option value="rose">Rose</option>
+              <option value="cyan">Cyan</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Role Description & Responsibilities</label>
+          <textarea id="pos-desc-field" rows="2" placeholder="Key responsibilities for this role..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-600"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3">
+          <button type="button" onclick="AdminApp.closePositionModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl text-xs font-bold bg-brand-700 text-white hover:bg-brand-800 transition shadow-sm">Save Position</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: SILAH APP EMBEDDED VIEWER
+       ======================================================== -->
+  <div id="silah-embed-modal" class="fixed inset-0 z-50 hidden flex-col modal-overlay p-2 sm:p-6">
+    <div class="bg-white rounded-2xl sm:rounded-3xl flex-1 flex flex-col overflow-hidden shadow-2xl border border-slate-200 max-w-6xl w-full mx-auto">
+      
+      <!-- Top control bar -->
+      <div class="bg-slate-900 text-white p-3.5 sm:px-6 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-xs font-bold text-white">
+            صلة
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white leading-tight">Silah Application Portal</h4>
+            <span id="silah-url-display" class="text-[11px] font-mono text-emerald-300 truncate max-w-xs block">https://hostiva.co.in/silah</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="btn-refresh-silah" class="p-1.5 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition" title="Refresh">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+          </button>
+          <button onclick="SilahApp.openExternal()" class="px-3 py-1.5 bg-brand-700 hover:bg-brand-600 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5" title="Open in New Tab">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Open Fullscreen</span>
+          </button>
+          <button id="close-silah-embed-modal" class="p-1.5 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Iframe Container -->
+      <div class="flex-1 bg-slate-100 relative">
+        <iframe 
+          id="silah-iframe" 
+          src="about:blank" 
+          class="w-full h-full border-0" 
+          allow="camera; microphone; geolocation"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Bottom Status Bar -->
+      <div class="bg-slate-50 px-4 py-2 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between">
+        <span>Integrated via WAFD FRIENDS 14 Class System</span>
+        <button onclick="SilahApp.openExternal()" class="text-brand-700 font-semibold hover:underline">
+          Having trouble viewing? Open directly &rarr;
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between">
+        
+        <div class="md:col-span-6">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-700 flex items-center justify-center text-white font-extrabold text-sm">
+              W14
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white val-website-name">WAFD FRIENDS 14 BATCH</h4>
+              <p class="text-xs text-emerald-400">Class: <span class="val-class-name">WAFD</span> • Mentor: <span class="val-usthad-name">Muhammed Haithami</span></p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 mt-3 max-w-md leading-relaxed">
+            United in knowledge, friendship, brotherhood, and moral excellence. Guided by the values of tradition and contemporary diligence.
+          </p>
+        </div>
+
+        <div class="md:col-span-6 flex flex-col md:items-end gap-3 text-xs">
+          <div class="flex items-center gap-4">
+            <a href="#home" class="hover:text-white transition">Home</a>
+            <a href="#usthad" class="hover:text-white transition">Usthad</a>
+            <a href="#students" class="hover:text-white transition">Students</a>
+            <a href="#leadership" class="hover:text-white transition">Leaders</a>
+            <a href="https://darulfalah.in/campus360/index.php" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-300 font-semibold transition flex items-center gap-1">
+              <span>Campus 360</span>
+              <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+            <a href="https://hostiva.co.in/silah" target="_blank" rel="noopener noreferrer" class="hover:text-teal-300 transition flex items-center gap-1">
+              <span>Silah App</span>
+              <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+          </div>
+          <p class="text-slate-600 text-[11px]">
+            &copy; 2026 WAFD FRIENDS 14 BATCH • All rights reserved.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/js/silah.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
