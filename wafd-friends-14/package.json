@@ -4,7 +4,10 @@
   "description": "Modern Class Management Website for WAFD FRIENDS 14 BATCH",
   "main": "server.js",
   "scripts": {
-    "start": "agy-node server.js"
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
   },
   "keywords": ["wafd", "batch14", "class-management"],
   "author": "WAFD Batch 14",

@@ -4,7 +4,7 @@ echo ========================================================
 echo   WAFD FRIENDS 14 BATCH - Class Management Website
 echo ========================================================
 echo.
-echo Starting server on http://localhost:3000 ...
+echo Starting server on http://wafd14:3000 ...
 echo Admin Credentials: admin / wafd14@admin
 echo.
 cd /d "%~dp0"
